@@ -1,8 +1,8 @@
 let zodziai = ['rock', 'scisors', 'paper'];
-const winner = 'wooho wiiner dinner ';
-const lost = 'no winer no dinner';
-playerSelection = window.prompt('what is your number')
-
+const winner = 'the player won';
+const lost = 'the pc';
+let playerScore = 0;
+     let computerScore = 0;
 
  const computerSelection = computerplay();    
 
@@ -11,7 +11,6 @@ function computerplay() {
     return randomresult;
 
 }
-
 
 
 
@@ -28,8 +27,12 @@ function getResult(playerSelection, computerSelection){
             return lost
         }
          
-    }
+    
         else if (playerSelection === "rock"){
+            if (computerSelection === "scisors"){
+                return winner
+            }
+             else if (playerSelection === "rock"){
             if (computerSelection === "scisors"){
                 return winner
             }
@@ -54,8 +57,39 @@ function getResult(playerSelection, computerSelection){
             return winner
         }
     }
-}
-    
-const resultatito = getResult(playerSelection, computerSelection)
+} }
 
-console.log(computerplay(resultatito))
+}
+
+function game (){
+
+  
+
+     for (let i = 0; i < 5; i++) {
+
+       let playerSelection = window.prompt('Choose your fighter');
+       let computerSelection = computerplay();
+       getResult(playerSelection, computerSelection)
+       
+        
+     
+     
+     if (getResult(playerSelection, computerSelection) === winner) {
+         console.log(winner);
+         playerScore++;
+     }
+         else if (getResult(playerSelection, computerSelection) === lost) {
+             console.log(lost);
+             computerScore++;
+         } else console.log('tie');
+     }
+    
+        if(playerScore > computerScore){
+            console.log('player winner')
+        } else if (computerScore > playerScore) {
+           console.log('pc winner')
+        } else if (computerScore === playerScore){
+        console.log('equal')
+        }
+    }
+ console.log(game())
