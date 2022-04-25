@@ -1,95 +1,116 @@
 let zodziai = ['rock', 'scisors', 'paper'];
 const winner = 'the player won';
 const lost = 'the pc';
-let playerScore = 0;
-     let computerScore = 0;
+
 
  const computerSelection = computerplay();    
 
 function computerplay() {
     const randomresult = zodziai[Math.floor(Math.random() * zodziai.length)]
-    return randomresult;
-
+    return randomresult
+ 
 }
 
 
+
+       rock.addEventListener('click', function () {
+   playerSelection = 'rock'
+   game()
+       })
+
+
+
+       paper.addEventListener('click', function () {
+        playerSelection = 'paper'
+       game()
+            })
+
+            scicors.addEventListener('click', function() {
+                playerSelection = 'scisors'
+               game()
+                    })
+
+                
+                    const player = document.createElement("div");
+                    container.append(player);
+                    player.innerText = "player =";
+                    
+                    const computer = document.createElement("div");
+                    container.append(computer);
+                    computer.innerText = "computer =";
 
 function getResult(playerSelection, computerSelection){
 
-    
-       
+
    
     if (playerSelection === computerSelection) {
-         return  "tie"
+         return  "equal"
     }
-    else if (playerSelection === "rock"){
-        if (computerSelection === "paper"){
+     if (playerSelection === "rock" && computerSelection === "paper"){
             return lost
         }
          
-    
-        else if (playerSelection === "rock"){
-            if (computerSelection === "scisors"){
+        if (playerSelection === "rock" && computerSelection === "scisors"){
                 return winner
             }
-             else if (playerSelection === "rock"){
-            if (computerSelection === "scisors"){
+             if (playerSelection === "rock" && computerSelection === "scisors"){
                 return winner
             }
-    }
-    else if (playerSelection === "paper"){
-        if (computerSelection === "rock"){
+    if (playerSelection === "paper" && computerSelection === "rock"){
             return winner
         }
-    }
-        else if (playerSelection === "paper"){
-            if (computerSelection === "scisors"){
+    
+         if (playerSelection === "paper" && computerSelection === "scisors"){
                 return lost
             }
-    }
-    else if (playerSelection === "scisors") {
-        if (computerSelection === "rock"){
+    
+    if (playerSelection === "scisors" && computerSelection === "rock"){
             return lost
         }
-    }
-    else if (playerSelection === 'scisors') {
-        if (computerSelection === 'paper'){
-            return winner
-        }
-    }
-} }
+    
+     if (playerSelection === 'scisors' && computerSelection === 'paper'){
+     
+        return winner
+     }
+    } 
 
-}
-
-function game (){
 
   
 
-     for (let i = 0; i < 5; i++) {
-
-       let playerSelection = window.prompt('Choose your fighter');
+    let computerScore = 0;
+    let playerScore = 0 
+function game (){
+  
+  
+    for (let i = 0; i < 1; i++){
+    
        let computerSelection = computerplay();
-       getResult(playerSelection, computerSelection)
        
         
-     
-     
-     if (getResult(playerSelection, computerSelection) === winner) {
-         console.log(winner);
+     if (getResult(playerSelection,computerSelection) === winner) {
+         console.log(winner)
          playerScore++;
-     }
-         else if (getResult(playerSelection, computerSelection) === lost) {
-             console.log(lost);
-             computerScore++;
-         } else console.log('tie');
-     }
-    
-        if(playerScore > computerScore){
-            console.log('player winner')
-        } else if (computerScore > playerScore) {
-           console.log('pc winner')
-        } else if (computerScore === playerScore){
-        console.log('equal')
+     }  if (getResult(playerSelection,computerSelection) === lost) {
+            (console.log(lost))
+             computerScore++;   
+         }
+        player.textContent ='player = '+ playerScore
+        computer.textContent = 'computer = ' + computerScore
+         
+        if (playerScore === 5) {
+            window.alert('you won')
+            playerScore = 0
+            computerScore = 0
         }
-    }
- console.log(game())
+         if (computerScore === 5) {
+            window.alert('game over')
+            playerScore = 0
+            computerScore = 0
+         
+        }   
+    }}
+   
+     
+
+
+  
